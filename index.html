@@ -315,9 +315,9 @@
           var elapsed = timeNow - lastTime
           rTri += ((90 * elapsed) / 1000.0) * Frotation
           rSquare += (75 * elapsed) / 1000.0
-          Ftranslate[0] += Fdirection[0]
-          Ftranslate[1] += Fdirection[1]
-          Ftranslate[2] += Fdirection[2]
+          Ftranslate[0] += Fdirection[0] * 0.1
+          Ftranslate[1] += Fdirection[1] * 0.1
+          Ftranslate[2] += Fdirection[2] * 0.1
         }
         lastTime = timeNow
       }
