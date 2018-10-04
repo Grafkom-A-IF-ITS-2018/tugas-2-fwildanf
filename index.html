@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Tugas 1</title>
+    <title>Tugas 2</title>
     <meta http-equiv="content-type" content="text/html" charset="ISO-8859-1">
 
     <script type="text/javascript" src="gl-matrix-min.js"></script>
@@ -112,20 +112,20 @@
         triangleVertexPositionBuffer = gl.createBuffer()
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
         var vertices = [
-          -0.9,  1.0,  0.0,
-          -0.5, 0.6, 0.0,
-          -0.9,  -1.0, 0.0,
-          -0.5, -0.6, 0.0,
-          0.5, -1.0, 0.0,
-          0.3, -0.6, 0.0,
-          0.9, -0.4, 0.0,
-          0.5, -0.4, 0.0,
-          0.9, 0.4, 0.0,
-          0.5, 0.4, 0.0,
-          0.5, 1.0, 0.0,
-          0.3, 0.6, 0.0,
-          -0.9, 1.0, 0.0,
-          -0.5, 0.6, 0.0
+          -0.45,  0.5,  0.0,
+          -0.25, 0.3, 0.0,
+          -0.45,  -0.5, 0.0,
+          -0.25, -0.3, 0.0,
+          0.25, -0.5, 0.0,
+          0.15, -0.3, 0.0,
+          0.45, -0.2, 0.0,
+          0.25, -0.2, 0.0,
+          0.45, 0.2, 0.0,
+          0.25, 0.2, 0.0,
+          0.25, 0.5, 0.0,
+          0.15, 0.3, 0.0,
+          -0.45, 0.5, 0.0,
+          -0.25, 0.3, 0.0
         ]
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
         triangleVertexPositionBuffer.itemSize = 3
@@ -156,22 +156,22 @@
         squareVertexPositionBuffer = gl.createBuffer()
         gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer)
         vertices = [
-          -1.0, 1.0, 0.0,
-          1.0, 1.0, 0.0,
-          1.0, -1.0, 0.0,
-          -1.0, -1.0, 0.0,
-          -1.0, 1.0, 0.0,
-          -1.0, 1.0, -1.0,
-          1.0, 1.0, -1.0,
-          1.0, 1.0, 0.0,
-          1.0, -1.0, 0.0,
-          1.0, -1.0, -1.0,
-          -1.0, -1.0, -1.0,
-          -1.0, -1.0, 0.0,
-          -1.0, -1.0, -1.0,
-          -1.0, 1.0, -1.0,
-          1.0, 1.0, -1.0,
-          1.0, -1.0, -1.0
+          -2.0, 2.0, 0.0,
+          2.0, 2.0, 0.0,
+          2.0, -2.0, 0.0,
+          -2.0, -2.0, 0.0,
+          -2.0, 2.0, 0.0,
+          -2.0, 2.0, -4.0,
+          2.0, 2.0, -4.0,
+          2.0, 2.0, 0.0,
+          2.0, -2.0, 0.0,
+          2.0, -2.0, -4.0,
+          -2.0, -2.0, -4.0,
+          -2.0, -2.0, 0.0,
+          -2.0, -2.0, -4.0,
+          -2.0, 2.0, -4.0,
+          2.0, 2.0, -4.0,
+          2.0, -2.0, -4.0
         ]
         gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW)
         squareVertexPositionBuffer.itemSize = 3
@@ -210,7 +210,7 @@
         mat4.identity(mvMatrix)
         mat4.translate(mvMatrix, mvMatrix, [0.0, 1.0, -7.0])
         mvPushMatrix()
-        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [1.0, 0.0, 0.0])
+        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [0.0, 1.0, 0.0])
         //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rTri))
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, triangleVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
@@ -221,7 +221,7 @@
         mvPopMatrix()
         mat4.translate(mvMatrix, mvMatrix, [0.0, -1.0, 0.0])
         mvPushMatrix()
-        mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rSquare), [0.0, 1.0, 0.0])
+        //mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rSquare), [0.0, 1.0, 0.0])
         //mat4.rotateX(mvMatrix, mvMatrix, glMatrix.toRadian(rSquare))
         gl.bindBuffer(gl.ARRAY_BUFFER, squareVertexPositionBuffer)
         gl.vertexAttribPointer(shaderProgram.vertexPositionAttribute, squareVertexPositionBuffer.itemSize, gl.FLOAT, false, 0, 0)
