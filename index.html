@@ -107,6 +107,10 @@
       var triangleVertexColorBuffer
       var squareVertexPositionBuffer
       var squareVertexColorBuffer
+
+      var Ftranslate = [0.0, 0.0, 0.0]
+      var Fdirection = [0.1*(Math.random() < 0.5 ? -1 : 1), 0.1*(Math.random() < 0.5 ? -1 : 1), 0.1*(Math.random() < 0.5 ? -1 : 1)]
+
       function initBuffers() {
         // Triangle Position
         triangleVertexPositionBuffer = gl.createBuffer()
@@ -210,6 +214,7 @@
         mat4.identity(mvMatrix)
         mat4.translate(mvMatrix, mvMatrix, [0.0, 1.0, -7.0])
         mvPushMatrix()
+        mat4.translate(mvMatrix, mvMatrix, Ftranslate)
         mat4.rotate(mvMatrix, mvMatrix, glMatrix.toRadian(rTri), [0.0, 1.0, 0.0])
         //mat4.rotateY(mvMatrix, mvMatrix, glMatrix.toRadian(rTri))
         gl.bindBuffer(gl.ARRAY_BUFFER, triangleVertexPositionBuffer)
@@ -238,6 +243,9 @@
           var elapsed = timeNow - lastTime
           rTri += (90 * elapsed) / 1000.0
           rSquare += (75 * elapsed) / 1000.0
+          Ftranslate[0] += Fdirection[0]
+          Ftranslate[1] += Fdirection[1]
+          Ftranslate[2] += Fdirection[2]
         }
         lastTime = timeNow
       }
